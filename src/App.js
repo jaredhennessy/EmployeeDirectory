@@ -46,17 +46,17 @@ class App extends React.Component {
   };
 
   handleSort = event => {
+    console.log(event.target.getAttribute("id"));
     const sortBy = event.target.getAttribute("id");
-    console.log(sortBy);
 
     if (this.state.sortBy === sortBy) {
       return this.setState({
-        modPeople: this.state.filtered.reverse(),
+        modPeople: this.state.modPeople.reverse(),
         sortBy: sortBy
       });
     }
 
-    let sortedList = this.state.filtered.sort((a, b) => {
+    let sortedList = this.state.modPeople.sort((a, b) => {
       switch (sortBy) {
         case "name":
           return a.name.first < b.name.first ? 1 : -1;
@@ -68,7 +68,7 @@ class App extends React.Component {
     });
 
     this.setState({
-      filtered: sortedList,
+      modPeople: sortedList,
       sortedBy: sortBy
     });
   };
