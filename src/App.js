@@ -48,8 +48,6 @@ class App extends React.Component {
   handleSort = e => {
     const sortBy = e.target.getAttribute("sortId");
     const sortIcon = e.target.getAttribute("sortIcon");
-    console.log(sortBy);
-    console.log(sortIcon);
 
     let sortedList = this.state.people;
 
