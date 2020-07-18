@@ -1,6 +1,9 @@
 {
   "name": "directory-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "moment": "^2.27.0",
