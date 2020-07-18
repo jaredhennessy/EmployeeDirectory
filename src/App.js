@@ -32,10 +32,13 @@ class App extends React.Component {
       searchTerm: e.target.value
     });
     // console.log(this.state.searchTerm);
+    this.filterPeople();
+  };
 
+  filterPeople = () => {
     let filteredList = this.state.people.filter(employee => {
       let employeeName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
-      return employeeName.incldudes(this.state.searchTerm.toLowerCase());
+      return employeeName.includes(this.state.searchTerm.toLowerCase());
     });
 
     this.setState({
