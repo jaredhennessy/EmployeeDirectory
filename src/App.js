@@ -45,6 +45,33 @@ class App extends React.Component {
     });
   };
 
+  handleSort = event => {
+    const sortBy = event.target.getAttribute("id");
+
+    if (this.state.sortBy === sortBy) {
+      return this.setState({
+        modPeople: this.state.filtered.reverse(),
+        sortBy: sortBy
+      });
+    }
+
+    let sortedList = this.state.filtered.sort((a, b) => {
+      switch (sortBy) {
+        case "name":
+          return a.name.first < b.name.first ? 1 : -1;
+        case "date":
+          return a.dob.date < b.dob.date ? 1 : -1;
+        default:
+          return a[sortBy] < b[sortBy] ? 1 : -1;
+      }
+    });
+
+    this.setState({
+      filtered: sortedList,
+      sortedBy: sortBy
+    });
+  };
+
   render() {
     return (
       <div className="container">
@@ -56,6 +83,7 @@ class App extends React.Component {
         <Employees
           people={this.state.modPeople}
           sortBy={this.state.sortBy}
+          handleSort={this.handleSort}
           loaded={this.state.loaded}
         />
       </div>
