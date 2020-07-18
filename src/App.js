@@ -28,10 +28,11 @@ class App extends React.Component {
   }
 
   handleInputChange = async e => {
+    console.log(e.target.value);
     await this.setState({
       searchTerm: e.target.value
     });
-    // console.log(this.state.searchTerm);
+    console.log(this.state.searchTerm);
     this.filterPeople();
   };
 
