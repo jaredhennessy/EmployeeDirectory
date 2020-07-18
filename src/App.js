@@ -7,6 +7,7 @@ import API from "./utils/API";
 class App extends React.Component {
   state = {
     people: {},
+    modPeople: {},
     searchTerm: "",
     sortBy: "",
     sortOrder: "asc",
@@ -21,6 +22,7 @@ class App extends React.Component {
         // document.addEventListener("keydown", this.handleInputChange, false);
         this.setState({
           people: res.data.results,
+          modPeople: res.data.results,
           loaded: true
         });
       })
@@ -28,22 +30,22 @@ class App extends React.Component {
   }
 
   handleInputChange = async e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     await this.setState({
       searchTerm: e.target.value
     });
-    console.log(this.state.searchTerm);
     this.filterPeople();
   };
 
   filterPeople = () => {
+    // console.log(this.state.searchTerm);
     let filteredList = this.state.people.filter(employee => {
       let employeeName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
       return employeeName.includes(this.state.searchTerm.toLowerCase());
     });
 
     this.setState({
-      people: filteredList
+      modPeople: filteredList
     });
   };
 
@@ -93,7 +95,7 @@ class App extends React.Component {
     }
 
     this.setState({
-      people: sortedList,
+      modPeople: sortedList,
       sortBy: sortBy
     });
   };
@@ -107,7 +109,7 @@ class App extends React.Component {
           searchTerm={this.state.searchTerm}
         />
         <Employees
-          people={this.state.people}
+          people={this.state.modPeople}
           sortBy={this.state.sortBy}
           sortOrder={this.state.sortOrder}
           sortIcon={this.state.sortIcon}
