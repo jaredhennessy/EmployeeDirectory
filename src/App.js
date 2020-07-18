@@ -2,7 +2,7 @@ import React from "react";
 import PageHeader from "./components/PageHeader";
 import Search from "./components/Search";
 import Employees from "./components/Employees";
-import API from "./utils/API";
+import API from "./utils/API.js";
 
 class App extends React.Component {
   state = {
