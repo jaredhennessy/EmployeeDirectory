@@ -24,6 +24,7 @@ class App extends React.Component {
           modPeople: res.data.results,
           loaded: true
         });
+        this.handleSort();
       })
       .catch(err => console.log(err));
   }
@@ -101,7 +102,6 @@ class App extends React.Component {
   };
 
   render() {
-    this.handleSort();
     return (
       <div className="container">
         <PageHeader />
