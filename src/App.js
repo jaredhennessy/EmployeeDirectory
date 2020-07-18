@@ -101,6 +101,7 @@ class App extends React.Component {
   };
 
   render() {
+    this.handleSort();
     return (
       <div className="container">
         <PageHeader />
