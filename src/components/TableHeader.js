@@ -9,11 +9,7 @@ function TableHeader(props) {
         Name
       </th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="phone">
-        <i
-          className={
-            props.sortedBy === "phone" ? "fas fa-arrow-circle-down" : ""
-          }
-        ></i>{" "}
+        <i className="fas fa-arrow-circle-down"></i>
         Phone
       </th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="email">
