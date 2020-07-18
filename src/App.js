@@ -53,9 +53,7 @@ class App extends React.Component {
     const sortBy = e.target.getAttribute("sortId");
     const sortIcon = e.target.getAttribute("sortIcon");
 
-    let sortedList = this.state.people;
-
-    sortedList = this.state.people.sort((a, b) => {
+    let sortedList = this.state.modPeople.sort((a, b) => {
       switch (sortBy) {
         case "name":
           if (a.name.last === b.name.last) {
@@ -80,7 +78,7 @@ class App extends React.Component {
     if (sortIcon !== null) {
       switch (this.state.sortOrder) {
         case "asc":
-          sortedList = this.state.people.reverse();
+          sortedList = this.state.modPeople.reverse();
           this.setState({
             sortOrder: "desc",
             sortIcon: "fas fa-arrow-circle-up"
