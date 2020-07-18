@@ -5,7 +5,9 @@ class Search extends Component {
     return (
       <div className="form-box">
         <form className="form-group">
-          <label htmlFor="emailSearch">Name Search:&nbsp;</label>
+          <label htmlFor="emailSearch">
+            Name Search (hit enter to clear your search):&nbsp;
+          </label>
           <input
             value={this.props.searchTerm}
             onChange={this.props.handleInputChange}
