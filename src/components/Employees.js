@@ -11,7 +11,12 @@ function Employees(props) {
       <div>
         <table className="table table-striped table-hover">
           <thead className="thead-dark">
-            <TableHeader sortBy={props.sortBy} handleSort={props.handleSort} />
+            <TableHeader
+              sortBy={props.sortBy}
+              sortOrder={props.sortOrder}
+              sortIcon={props.sortIcon}
+              handleSort={props.handleSort}
+            />
           </thead>
           <tbody>
             {employeeList.map(people => (

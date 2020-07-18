@@ -9,7 +9,9 @@ class App extends React.Component {
     people: {},
     modPeople: {},
     searchTerm: "",
-    sortBy: "",
+    sortBy: "name",
+    sortOrder: "asc",
+    sortIcon: "fas fa-arrow-circle-down",
     loaded: false
   };
 
@@ -46,38 +48,51 @@ class App extends React.Component {
   };
 
   handleSort = e => {
-    const sortBy = e.target.getAttribute("id");
+    const sortBy = e.target.getAttribute("sortId");
+    const sortIcon = e.target.getAttribute("sortIcon");
+    console.log(sortBy);
+    console.log(sortIcon);
 
     let sortedList = this.state.modPeople;
 
-    if (this.state.sortBy === sortBy) {
-      sortedList = this.state.modPeople.reverse();
-      // return this.setState({
-      //   modPeople: this.state.modPeople.reverse(),
-      //   sortBy: sortBy
-      // });
-    } else {
-      sortedList = this.state.modPeople.sort((a, b) => {
-        switch (sortBy) {
-          case "name":
-            return a.name.first < b.name.first ? 1 : -1;
-          case "date":
-            return a.dob.date < b.dob.date ? 1 : -1;
-          default:
-            return a[sortBy] < b[sortBy] ? 1 : -1;
-        }
+    sortedList = this.state.modPeople.sort((a, b) => {
+      switch (sortBy) {
+        case "name":
+          if (a.name.last === b.name.last) {
+            return a.name.first > b.name.first ? 1 : -1;
+          } else {
+            return a.name.last > b.name.last ? 1 : -1;
+          }
+        case "date":
+          return a.dob.date > b.dob.date ? 1 : -1;
+        default:
+          return a[sortBy] > b[sortBy] ? 1 : -1;
+      }
+    });
+
+    if (sortBy !== this.state.sortBy) {
+      this.setState({
+        sortOrder: "asc",
+        sortIcon: "fas fa-arrow-circle-down"
       });
     }
-    // let sortedList = this.state.modPeople.sort((a, b) => {
-    //   switch (sortBy) {
-    //     case "name":
-    //       return a.name.first < b.name.first ? 1 : -1;
-    //     case "date":
-    //       return a.dob.date < b.dob.date ? 1 : -1;
-    //     default:
-    //       return a[sortBy] < b[sortBy] ? 1 : -1;
-    //   }
-    // });
+
+    if (sortIcon !== null) {
+      switch (this.state.sortOrder) {
+        case "asc":
+          sortedList = this.state.modPeople.reverse();
+          this.setState({
+            sortOrder: "desc",
+            sortIcon: "fas fa-arrow-circle-up"
+          });
+          break;
+        default:
+          this.setState({
+            sortOrder: "asc",
+            sortIcon: "fas fa-arrow-circle-down"
+          });
+      }
+    }
 
     this.setState({
       modPeople: sortedList,
@@ -96,6 +111,8 @@ class App extends React.Component {
         <Employees
           people={this.state.modPeople}
           sortBy={this.state.sortBy}
+          sortOrder={this.state.sortOrder}
+          sortIcon={this.state.sortIcon}
           handleSort={this.handleSort}
           loaded={this.state.loaded}
         />

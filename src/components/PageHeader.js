@@ -7,7 +7,8 @@ class Header extends Component {
         <h1 className="display-4">Employee Directory</h1>
         <hr className="my-4" />
         <p className="lead">
-          Click an arrow next to a field name to sort the table.
+          Click field name to sort the table. Click an arrow to reverse the
+          sort.
         </p>
       </div>
     );
