@@ -47,7 +47,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <PageHeader />
         <Search
           handleInputChange={this.handleInputChange}
