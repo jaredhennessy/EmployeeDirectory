@@ -7,9 +7,8 @@ import API from "./utils/API";
 class App extends React.Component {
   state = {
     people: {},
-    modPeople: {},
     searchTerm: "",
-    sortBy: "name",
+    sortBy: "",
     sortOrder: "asc",
     sortIcon: "fas fa-arrow-circle-down",
     loaded: false
@@ -21,10 +20,8 @@ class App extends React.Component {
         // console.log(res.data.results);
         this.setState({
           people: res.data.results,
-          modPeople: res.data.results,
           loaded: true
         });
-        this.handleSort();
       })
       .catch(err => console.log(err));
   }
@@ -44,7 +41,7 @@ class App extends React.Component {
     });
 
     this.setState({
-      modPeople: filteredList
+      people: filteredList
     });
   };
 
@@ -54,9 +51,9 @@ class App extends React.Component {
     console.log(sortBy);
     console.log(sortIcon);
 
-    let sortedList = this.state.modPeople;
+    let sortedList = this.state.people;
 
-    sortedList = this.state.modPeople.sort((a, b) => {
+    sortedList = this.state.people.sort((a, b) => {
       switch (sortBy) {
         case "name":
           if (a.name.last === b.name.last) {
@@ -81,7 +78,7 @@ class App extends React.Component {
     if (sortIcon !== null) {
       switch (this.state.sortOrder) {
         case "asc":
-          sortedList = this.state.modPeople.reverse();
+          sortedList = this.state.people.reverse();
           this.setState({
             sortOrder: "desc",
             sortIcon: "fas fa-arrow-circle-up"
@@ -96,7 +93,7 @@ class App extends React.Component {
     }
 
     this.setState({
-      modPeople: sortedList,
+      people: sortedList,
       sortBy: sortBy
     });
   };
@@ -110,7 +107,7 @@ class App extends React.Component {
           searchTerm={this.state.searchTerm}
         />
         <Employees
-          people={this.state.modPeople}
+          people={this.state.people}
           sortBy={this.state.sortBy}
           sortOrder={this.state.sortOrder}
           sortIcon={this.state.sortIcon}
