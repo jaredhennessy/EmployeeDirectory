@@ -18,8 +18,6 @@ class App extends React.Component {
   componentDidMount() {
     API.search()
       .then(res => {
-        // console.log(res.data.results);
-        // document.addEventListener("keydown", this.handleInputChange, false);
         this.setState({
           people: res.data.results,
           modPeople: res.data.results,
@@ -30,7 +28,6 @@ class App extends React.Component {
   }
 
   handleInputChange = async e => {
-    // console.log(e.target.value);
     await this.setState({
       searchTerm: e.target.value
     });
@@ -38,7 +35,6 @@ class App extends React.Component {
   };
 
   filterPeople = () => {
-    // console.log(this.state.searchTerm);
     let filteredList = this.state.people.filter(employee => {
       let employeeName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`;
       return employeeName.includes(this.state.searchTerm.toLowerCase());

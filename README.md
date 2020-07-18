@@ -8,7 +8,7 @@ an employee directory created in React
 
 ## Demo
 
-[URL](https://employee-directory-jh-demo.herokuapp.com/) / [video]()
+[URL](https://employee-directory-jh-demo.herokuapp.com/) / [video](https://drive.google.com/file/d/1AysaJ5csOeQ1cKx57bhUmjQuS2pTLRZx/view)
 
 ## Table of Contents
 
