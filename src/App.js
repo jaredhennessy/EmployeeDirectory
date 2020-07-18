@@ -47,6 +47,7 @@ class App extends React.Component {
 
   handleSort = event => {
     const sortBy = event.target.getAttribute("id");
+    console.log(sortBy);
 
     if (this.state.sortBy === sortBy) {
       return this.setState({

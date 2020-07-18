@@ -14,13 +14,6 @@ class Search extends Component {
             className="form-control"
             placeholder="Search"
           />
-          {/* <button
-            type="submit"
-            // onClick={props.handleFormSubmit}
-            className="btn btn-success"
-          >
-            Search
-          </button> */}
         </form>
       </div>
     );

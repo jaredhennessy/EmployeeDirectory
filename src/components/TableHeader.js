@@ -3,17 +3,45 @@ import React from "react";
 function TableHeader(props) {
   return (
     <tr>
-      <th className="col"></th>
-      <th className="col" onClick={props.handleSort} id="name">
+      <th scope="col"></th>
+      <th scope="col" className="sortBy" onClick={props.handleSort} id="name">
+        <i
+          className={
+            props.sortedBy === "name"
+              ? "fas fa-arrow-circle-down"
+              : "fas fa-arrow-circle-down hidden"
+          }
+        ></i>{" "}
         Name
       </th>
-      <th className="col" onClick={props.handleSort} id="phone">
+      <th scope="col" className="sortBy" onClick={props.handleSort} id="phone">
+        <i
+          className={
+            props.sortedBy === "phone"
+              ? "fas fa-arrow-circle-down"
+              : "fas fa-arrow-circle-down hidden"
+          }
+        ></i>{" "}
         Phone
       </th>
-      <th className="col" onClick={props.handleSort} id="email">
+      <th scope="col" className="sortBy" onClick={props.handleSort} id="email">
+        <i
+          className={
+            props.sortedBy === "email"
+              ? "fas fa-arrow-circle-down"
+              : "fas fa-arrow-circle-down hidden"
+          }
+        ></i>{" "}
         Email
       </th>
-      <th className="col" onClick={props.handleSort} id="date">
+      <th scope="col" className="sortBy" onClick={props.handleSort} id="date">
+        <i
+          className={
+            props.sortedBy === "date"
+              ? "fas fa-arrow-circle-down"
+              : "fas fa-arrow-circle-down hidden"
+          }
+        ></i>{" "}
         DOB
       </th>
     </tr>
