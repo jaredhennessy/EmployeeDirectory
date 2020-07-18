@@ -26,9 +26,9 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
-  handleInputChange = async event => {
+  handleInputChange = async e => {
     await this.setState({
-      searchTerm: event.target.value.toLowerCase()
+      searchTerm: e.target.value.toLowerCase()
     });
     // console.log(this.state.searchTerm);
     this.filterPeople();
@@ -45,31 +45,43 @@ class App extends React.Component {
     });
   };
 
-  handleSort = event => {
-    console.log(event.target.getAttribute("id"));
-    const sortBy = event.target.getAttribute("id");
+  handleSort = e => {
+    const sortBy = e.target.getAttribute("id");
+
+    let sortedList = this.state.modPeople;
 
     if (this.state.sortBy === sortBy) {
-      return this.setState({
-        modPeople: this.state.modPeople.reverse(),
-        sortBy: sortBy
+      sortedList = this.state.modPeople.reverse();
+      // return this.setState({
+      //   modPeople: this.state.modPeople.reverse(),
+      //   sortBy: sortBy
+      // });
+    } else {
+      sortedList = this.state.modPeople.sort((a, b) => {
+        switch (sortBy) {
+          case "name":
+            return a.name.first < b.name.first ? 1 : -1;
+          case "date":
+            return a.dob.date < b.dob.date ? 1 : -1;
+          default:
+            return a[sortBy] < b[sortBy] ? 1 : -1;
+        }
       });
     }
-
-    let sortedList = this.state.modPeople.sort((a, b) => {
-      switch (sortBy) {
-        case "name":
-          return a.name.first < b.name.first ? 1 : -1;
-        case "date":
-          return a.dob.date < b.dob.date ? 1 : -1;
-        default:
-          return a[sortBy] < b[sortBy] ? 1 : -1;
-      }
-    });
+    // let sortedList = this.state.modPeople.sort((a, b) => {
+    //   switch (sortBy) {
+    //     case "name":
+    //       return a.name.first < b.name.first ? 1 : -1;
+    //     case "date":
+    //       return a.dob.date < b.dob.date ? 1 : -1;
+    //     default:
+    //       return a[sortBy] < b[sortBy] ? 1 : -1;
+    //   }
+    // });
 
     this.setState({
       modPeople: sortedList,
-      sortedBy: sortBy
+      sortBy: sortBy
     });
   };
 

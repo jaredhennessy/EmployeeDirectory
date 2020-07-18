@@ -6,19 +6,19 @@ function TableHeader(props) {
       <th scope="col"></th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="name">
         <i className="fas fa-arrow-circle-down"></i>
-        Name
+        &nbsp;Name
       </th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="phone">
         <i className="fas fa-arrow-circle-down"></i>
-        Phone
+        &nbsp;Phone
       </th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="email">
         <i className="fas fa-arrow-circle-down"></i>
-        Email
+        &nbsp;Email
       </th>
       <th scope="col" className="sortBy" onClick={props.handleSort} id="date">
         <i className="fas fa-arrow-circle-down"></i>
-        DOB
+        &nbsp;DOB
       </th>
     </tr>
   );
