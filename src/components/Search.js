@@ -5,12 +5,11 @@ class Search extends Component {
     return (
       <div className="form-box">
         <form className="form-group">
-          <label htmlFor="emailSearch">
-            Name Search (hit enter to clear your search):&nbsp;
-          </label>
+          <label htmlFor="emailSearch">Name Search:&nbsp;</label>
           <input
             value={this.props.searchTerm}
-            onChange={this.props.handleInputChange}
+            // onChange={this.props.handleInputChange}
+            onKeyDown={this.props.handleInputChange}
             name="search"
             type="text"
             className="form-control"
